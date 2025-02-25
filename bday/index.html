@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise!</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #ffe6f2;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            position: relative;
+        }
+        .btn {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn:hover { background-color: #d81b60; }
+        .hidden { display: none; }
+        .gif-container {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+        .gif-container img {
+            width: 250px;
+        }
+        .message {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff4081;
+            margin-bottom: 10px;
+        }
+        /* Snowfall effect */
+        .falling-item {
+            position: absolute;
+            top: -50px;
+            font-size: 24px;
+            user-select: none;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            to { transform: translateY(100vh); }
+        }
+        .credit {
+            position: absolute;
+            bottom: 10px;
+            font-size: 14px;
+            color: #ff4081;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <button class="btn" onclick="showSurprise()">Pencet Aku dong Maniezz</button>
+    
+    <div class="gif-container hidden">
+        <div class="message">Ey yo, you’re old enough to start thinking about retinol sis HAHAHA mampus :b</div>
+        <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExcnVsYjdkbHo4bzF3MzV2ZXhpamJwZGlkdnEyMHlwYjR6NjR4ZWNoNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/zCo6WlX6IOOw3NZXhw/giphy.gif" alt="Surprise GIF">
+        <div class="message">🎉HBD ea Palent🎉</div>
+      </div>
+
+    <div class="credit">From ur kawan @Mg</div>
+
+    <script>
+        function showSurprise() {
+            document.querySelector('.btn').style.display = 'none';
+            document.querySelector('.gif-container').classList.remove('hidden');
+            startFallingItems();
+        }
+
+        function startFallingItems() {
+            const items = ["🎁", "🎂", "🎉"]; // Kado, Kue, dan Confetti
+            setInterval(() => {
+                const item = document.createElement("div");
+                item.classList.add("falling-item");
+                item.innerHTML = items[Math.floor(Math.random() * items.length)];
+                item.style.left = Math.random() * window.innerWidth + "px";
+                item.style.animationDuration = (Math.random() * 3 + 2) + "s";
+                document.body.appendChild(item);
+
+                setTimeout(() => { item.remove(); }, 5000);
+            }, 300);
+        }
+    </script>
+</body>
+</html>
